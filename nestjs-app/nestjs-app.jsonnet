@@ -32,57 +32,57 @@ function(
       },
     },
 
-    {
-      apiVersion: 'networking.k8s.io/v1',
-      kind: 'Ingress',
-      metadata: {
-        name: 'nestjs-app',
-        annotations: {
-          'traefik.ingress.kubernetes.io/router.entrypoints': 'websecure',
-          'traefik.ingress.kubernetes.io/router.tls': 'true',
-          'traefik.ingress.kubernetes.io/router.middlewares': 'nestjs-app@kubernetescrd',
-        },
-      },
-      spec: {
-        rules: [
-          {
-            host: 'tobias.tvengine.vorab.jetzt',
-          },
-          {
-            http: {
-              paths: [
-                {
-                  path: '/nestjs',
-                  pathType: 'Prefix',
-                  backend: {
-                    service: {
-                      name: 'nestjs-app',
-                      port: {
-                        number: 80,
-                      },
-                    },
-                  },
-                },
-              ],
-            },
-          },
-        ],
-      },
-    },
+    // {
+    //   apiVersion: 'networking.k8s.io/v1',
+    //   kind: 'Ingress',
+    //   metadata: {
+    //     name: 'nestjs-app',
+    //     annotations: {
+    //       'traefik.ingress.kubernetes.io/router.entrypoints': 'websecure',
+    //       'traefik.ingress.kubernetes.io/router.tls': 'true',
+    //       'traefik.ingress.kubernetes.io/router.middlewares': 'nestjs-app@kubernetescrd',
+    //     },
+    //   },
+    //   spec: {
+    //     rules: [
+    //       {
+    //         host: 'tobias.tvengine.vorab.jetzt',
+    //       },
+    //       {
+    //         http: {
+    //           paths: [
+    //             {
+    //               path: '/nestjs',
+    //               pathType: 'Prefix',
+    //               backend: {
+    //                 service: {
+    //                   name: 'nestjs-app',
+    //                   port: {
+    //                     number: 80,
+    //                   },
+    //                 },
+    //               },
+    //             },
+    //           ],
+    //         },
+    //       },
+    //     ],
+    //   },
+    // },
 
-    {
-      apiVersion: 'traefik.containo.us/v1alpha1',
-      kind: 'Middleware',
-      metadata: {
-        name: 'nestjs-app',
-      },
-      spec: {
-        stripPrefix: {
-          forceSlash: true,
-          prefixes: ['/nestjs'],
-        },
-      },
-    },
+    // {
+    //   apiVersion: 'traefik.containo.us/v1alpha1',
+    //   kind: 'Middleware',
+    //   metadata: {
+    //     name: 'nestjs-app',
+    //   },
+    //   spec: {
+    //     stripPrefix: {
+    //       forceSlash: true,
+    //       prefixes: ['/nestjs'],
+    //     },
+    //   },
+    // },
 
 
     {
