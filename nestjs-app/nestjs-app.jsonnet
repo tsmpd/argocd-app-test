@@ -1,6 +1,6 @@
 function(
   myTLA='default',
-  replicas=1
+  replicas='1'
 )
   [
     {
